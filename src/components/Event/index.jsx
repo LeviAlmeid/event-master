@@ -1,8 +1,22 @@
+import './style.scss'
+
 export function Event(){
   return(
-    <div className="col mx-auto text-center">
-      <h5>Evento tal</h5>
+      <div class="agendas bg-secondary bg-opacity-10">
+              
+              <div class="cont-picture">
+                <img src="https://www.mundodomarketing.com.br/images/editoriais/artigo-evento.jpg" alt="Imagem do evento" />
+              </div>
+              <div class="footer px-3 py-2 h-2 d-flex align-items-center ">
+                <div className='featured-date d-flex flex-column bg-white  rounded align-items-center'>
+                    <span className='text-danger'>Jun</span>
+                    <span className='text-body'>25</span>
+                </div>
+                <div class=" ms-4">
+                <h5>Baile do Gordo</h5>
+              </div>
+              </div>
+            </div>
 
-    </div>
   )
 }
