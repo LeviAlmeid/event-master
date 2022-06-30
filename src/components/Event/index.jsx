@@ -1,6 +1,6 @@
 import './style.scss'
 
-export function Event(){
+export function Event(props){
   return(
       <div class="agendas bg-secondary bg-opacity-10">
               
@@ -13,7 +13,7 @@ export function Event(){
                     <span className='text-body'>25</span>
                 </div>
                 <div class=" ms-4">
-                <h5>Baile do Gordo</h5>
+                <h5>{props.name}</h5>
               </div>
               </div>
             </div>

@@ -41,8 +41,8 @@ export function Header() {
                   <input type="text" class="form-control" id="recipient-name" required />
                 </div>
                 <div class="mb-4">
-                  <label for="pass" class="col-form-label">Password:</label>
-                  <input type="password" class="form-control" id="pass" required />
+                  <label for="pass-login" class="col-form-label">Password:</label>
+                  <input type="password" class="form-control" id="pass-login" required />
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                   <button type="button" class="text-light px-5 btn bg-dark bg-opacity-50" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-whatever="@getbootstrap">Register</button>
@@ -77,7 +77,7 @@ export function Header() {
                   <input type="password" class="form-control" id="pass" required />
                 </div>
                 <div class="mb-3">
-                  <label for="pass" class="col-form-label">Confirm Password:</label>
+                  <label for="passConfirm" class="col-form-label">Confirm Password:</label>
                   <input type="password" class="form-control" id="passConfirm" required />
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
