@@ -5,7 +5,7 @@ export function Event(){
       <div class="agendas bg-secondary bg-opacity-10">
               
               <div class="cont-picture">
-                <img src="https://www.mundodomarketing.com.br/images/editoriais/artigo-evento.jpg" alt="Imagem do evento" />
+                <img src="https://picsum.photos/seed/picsum/500/300" alt="Imagem do evento" />
               </div>
               <div class="footer px-3 py-2 h-2 d-flex align-items-center ">
                 <div className='featured-date d-flex flex-column bg-white  rounded align-items-center'>
