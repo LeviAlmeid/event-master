@@ -1,6 +1,7 @@
 import { Event } from "../components/Event";
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
+import { Header } from "../components/Header";
 
 
 
@@ -12,7 +13,7 @@ export function HomePage() {
       setEvent(data);
     });
   }, []);
-  console.log(event);
+
 
   return (
     <>
@@ -26,7 +27,6 @@ export function HomePage() {
         <div className="Events pt-2 mt-3">
           <div className="row">
            {event?.map((event) => {
-            console.log(event?.name);
             
             return <Event 
               key= {event.id}

@@ -1,6 +1,62 @@
+import { useAuth } from '../../context/AuthProvider/useAuth'
 import './style.scss'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import {createBrowserHistory} from 'history'
+
+
+function verifyLog(){
+
+  const auth = useAuth();
+
+  if(!auth.email){
+    console.log("não ta logado")
+    return (
+      <ul class="navbar-nav px-1 ms-auto me-5 mb-2 mb-lg-0">
+
+
+      <button type="button" class=" px-5 btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Login</button>
+</ul>
+    )
+  }
+  console.log("ta = logado")
+
+  return (
+    <ul class="navbar-nav px-1 ms-auto me-5 mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active"   href="#">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">My Events</a>
+              </li>
+
+              <button type="button" class=" px-5 btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Logout</button>
+    </ul>
+  )
+}
+
 
 export function Header() {
+  const auth = useAuth()
+        const history = createBrowserHistory({
+        basename: "/"
+      })
+
+      
+
+  // async function log(email, password){
+  //   try{
+  //     await auth.authenticate(email, password)
+  //     console.log("LOGOU")
+
+
+  //     window.redirect = history.push
+  //   }catch(error){
+  //     console.log()
+  //   }
+  
+  // }
+
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -10,17 +66,8 @@ export function Header() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav px-1 ms-auto me-5 mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Events</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">My Events</a>
-              </li>
-            </ul>
-            <button type="button" class=" px-5 btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Login</button>
 
-
+            {verifyLog()}          
 
           </div>
         </div>
@@ -35,7 +82,7 @@ export function Header() {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form name='login' >
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Email:</label>
                   <input type="text" class="form-control" id="recipient-name" required />

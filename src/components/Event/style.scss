@@ -1,5 +1,5 @@
 .agendas {
-    width: 25rem;
+    width: 20rem;
     border-radius: 1rem;
     transition: width 0.3s, height 0.5s;
     box-shadow: 0 0 1em rgb(109, 107, 94);
@@ -7,7 +7,7 @@
     overflow: hidden;
     align-items: center;
     position: relative;
-    margin: 3rem auto;
+    margin: 2rem auto;
     padding: 0;
 
     & .cont {
