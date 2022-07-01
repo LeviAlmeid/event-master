@@ -1,61 +1,81 @@
 import { useAuth } from '../../context/AuthProvider/useAuth'
 import './style.scss'
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {createBrowserHistory} from 'history'
+import React, { useState } from 'react';
+import { api } from "../../services/api";
 
 
-function verifyLog(){
+
+
+
+function verifyLog() {
 
   const auth = useAuth();
 
-  if(!auth.email){
+  if (!auth.email) {
     console.log("não ta logado")
     return (
       <ul class="navbar-nav px-1 ms-auto me-5 mb-2 mb-lg-0">
 
 
-      <button type="button" class=" px-5 btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Login</button>
-</ul>
+        <button type="button" class=" px-5 btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Login</button>
+      </ul>
     )
   }
   console.log("ta = logado")
 
   return (
     <ul class="navbar-nav px-1 ms-auto me-5 mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active"   href="#">Events</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">My Events</a>
-              </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">My Events</a>
+      </li>
 
-              <button type="button" class=" px-5 btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Logout</button>
+      <button type="button" class=" px-5 btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@getbootstrap">Logout</button>
     </ul>
   )
 }
 
 
 export function Header() {
-  const auth = useAuth()
-        const history = createBrowserHistory({
-        basename: "/"
-      })
-
-      
-
-  // async function log(email, password){
-  //   try{
-  //     await auth.authenticate(email, password)
-  //     console.log("LOGOU")
+  function initialState() {
+    return { email: '', password: '' }
+  }
+  const [values, setValues] = useState(initialState)
 
 
-  //     window.redirect = history.push
-  //   }catch(error){
-  //     console.log()
-  //   }
-  
-  // }
+
+  async function LoginRequest(email, password) {
+
+    try {
+      const request = await api.post('users/auth', { email, password })
+
+      alert(request.data[0].email)
+
+      return request.data;
+    } catch (error) {
+      console.log("deu erro no Login")
+      return null;
+    }
+
+  }
+
+  function botaoHandler(event) {
+    event.preventDefault()
+    console.log("Botão Clicado!")
+    LoginRequest(values.email, values.password)
+  }
+
+
+  function onChange(event) {
+    const { value, name } = event.target;
+    setValues({
+      ...values,
+      [name]: value,
+
+    })
+  }
 
   return (
     <>
@@ -67,7 +87,7 @@ export function Header() {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            {verifyLog()}          
+            {verifyLog()}
 
           </div>
         </div>
@@ -84,16 +104,16 @@ export function Header() {
             <div class="modal-body">
               <form name='login' >
                 <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Email:</label>
-                  <input type="text" class="form-control" id="recipient-name" required />
+                  <label for="email-login" class="col-form-label">Email:</label>
+                  <input type="text" class="form-control" name='email' onChange={onChange} value={values.email} id="email-login" required />
                 </div>
                 <div class="mb-4">
                   <label for="pass-login" class="col-form-label">Password:</label>
-                  <input type="password" class="form-control" id="pass-login" required />
+                  <input type="password" class="form-control" name='password' onChange={onChange} value={values.password} id="pass-login" required />
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                   <button type="button" class="text-light px-5 btn bg-dark bg-opacity-50" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-whatever="@getbootstrap">Register</button>
-                  <button type="submit" class="btn btn-success px-5">Login</button>
+                  <button type="btn" onClick={botaoHandler} class="btn btn-success px-5">Login</button>
                 </div>
               </form>
             </div>
@@ -128,7 +148,7 @@ export function Header() {
                   <input type="password" class="form-control" id="passConfirm" required />
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                <button type="submit" class="btn btn-success px-5 w-100">Register</button>
+                  <button type="submit" class="btn btn-success px-5 w-100">Register</button>
                 </div>
               </form>
             </div>

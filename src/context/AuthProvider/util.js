@@ -18,16 +18,16 @@ export function getUserLocalStorage() {
 
 
 export async function LoginRequest(email, password){
-
+  
   try{
     const request = await api.post('users/auth', {email, password})
-
+    
     console.log("bati na api")
-
+    
     return request.data; 
   }catch(error){
-    return null;
     console.log("deu erro no Login")
+    return null;
   }
 
 }

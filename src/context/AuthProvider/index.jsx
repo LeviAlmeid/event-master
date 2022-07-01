@@ -21,6 +21,7 @@ export const AuthProvider = ({children}) => {
 
     setUser(payload)
     setUserLocalStorage(payload)
+    return(response.data)
   }
 
   function logout(){

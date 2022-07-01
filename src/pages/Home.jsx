@@ -1,7 +1,7 @@
 import { Event } from "../components/Event";
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
-import { Header } from "../components/Header";
+import { useAuth } from "../context/AuthProvider/useAuth";
 
 
 
@@ -13,6 +13,9 @@ export function HomePage() {
       setEvent(data);
     });
   }, []);
+
+  const use = useAuth()
+
 
 
   return (
