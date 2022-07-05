@@ -3,7 +3,6 @@
     border-radius: 1rem;
     transition: width 0.3s, height 0.5s;
     box-shadow: 0 0 1em rgb(109, 107, 94);
-    cursor: pointer;
     overflow: hidden;
     align-items: center;
     position: relative;
@@ -54,4 +53,7 @@
     background-size: cover;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+}
+.descrip{
+    height: 12rem;
 }

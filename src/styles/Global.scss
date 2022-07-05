@@ -1,4 +1,4 @@
-:root{
+:root {
   --red: #E60234;
   --blue: #174950;
   --green: #33CC95;
@@ -10,29 +10,34 @@
   --shape: #FFFFFF;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-html{
-  
+html {
 
-  @media (max-width: 1080px){
-      font-size: 93.75%;
-  }    
-  @media (max-width: 720px){
-      font-size: 87.5%;
 
-      .agendas{
-        width: 20rem;
-      }
-  }    
+  @media (max-width: 1080px) {
+    font-size: 93.75%;
+  }
+
+  @media (max-width: 720px) {
+    font-size: 87.5%;
+
+    .agendas {
+      width: 20rem;
+    }
+  }
+}
+p {
+   margin-top: 0; 
+   margin-bottom: 0rem; 
 }
 
-body{
+body {
   font-family: 'Poppins', sans-serif;
   background: var(--backgroung);
   -webkit-font-smoothing: antialiased;
@@ -41,20 +46,26 @@ body{
 body,
 input,
 textarea,
-button{
-font-family: 'Poppins', sans-serif;
-font-weight: 400;
+button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, strong{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
   font-weight: 600;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
@@ -63,10 +74,11 @@ button{
   cursor: not-allowed;
 }
 
-ul li{
+ul li {
   list-style-type: none;
 }
 
-img{
-  max-width: 100%;
+img {
+  width: -webkit-fill-available;  
+  height: 12rem;
 }

@@ -1,7 +1,6 @@
 import { Event } from "../components/Event";
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
-import { useAuth } from "../context/AuthProvider/useAuth";
 
 
 
@@ -14,7 +13,7 @@ export function HomePage() {
     });
   }, []);
 
-  const use = useAuth()
+  console.log(event)
 
 
 
@@ -34,8 +33,13 @@ export function HomePage() {
             return <Event 
               key= {event.id}
               id= {event.id}
+              options= ''
               name={event.name}
               linkPicture= {event.linkPicture}
+              description= {event.description}
+              date= {event.date}
+              start= {event.startAt}
+              finish= {event.finishAt}
             /> ;
            })}
           </div>
